@@ -1,8 +1,8 @@
 //mybirthdaycal
 
-const myBirthday_day = new Date("1998/03/18");
+const myBirthday_day = new Date("1998/08/24");
 const dayOfmybirth = myBirthday_day.getDate();
-const monthOfmybirth = myBirthday_day.getMonth() + 1;
+const monthOfmybirth = myBirthday_day.getMonth();
 const yearOfmybirth = myBirthday_day.getFullYear();
 
 //timecurrentcal
@@ -14,6 +14,10 @@ const currentday = currentDate.getDate();
 
 //connecttagHTML
 const tagtimecountdown = document.getElementById("timecountdown");
+const tagday = document.getElementById("day");
+const taghours = document.getElementById("hours");
+const tagmins = document.getElementById("mins");
+const tagsecs = document.getElementById("secs");
 const tagblass = document.getElementById("bless");
 
 //arr bless
@@ -63,6 +67,9 @@ const HBD = () => {
 
 //fn Time countdown
 const countdown = () => {
+  //console.log(nextTimetobirthday());
+  //console.log(new Date());
+
   const timeDiff = nextTimetobirthday() - new Date();
 
   console.log(timeDiff);
@@ -76,13 +83,17 @@ const countdown = () => {
 
   //inserttotagHTML
   tagtimecountdown.innerHTML = `${days} Day ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+  tagday.innerHTML = days;
+  taghours.innerHTML = hours;
+  tagmins.innerHTML = minutes;
+  tagsecs.innerHTML = seconds;
 
-  if (dayOfmybirth == currentday && monthOfmybirth == currentmonth) {
+  if (dayOfmybirth === currentday && monthOfmybirth + 1 === currentmonth) {
     HBD();
   } else {
     //update every 1 sec
     setTimeout(countdown, 1000);
-    console.log(dayOfmybirth, currentday, monthOfmybirth, currentmonth);
+    console.log(dayOfmybirth, currentday, monthOfmybirth + 1, currentmonth);
   }
 };
 
