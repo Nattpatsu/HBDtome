@@ -1,3 +1,6 @@
+//name
+const myName = " iaskuS tapttaN ";
+
 //mybirthdaycal
 
 const myBirthday_day = new Date("1998/08/24");
@@ -13,12 +16,15 @@ const currentmonth = currentDate.getMonth() + 1; //.toLocaleString("en-US", { mo
 const currentday = currentDate.getDate();
 
 //connecttagHTML
-const tagtimecountdown = document.getElementById("timecountdown");
+//const tagtimecountdown = document.getElementById("timecountdown");
+const tagtimesection = document.getElementById("timesection");
 const tagday = document.getElementById("day");
 const taghours = document.getElementById("hours");
 const tagmins = document.getElementById("mins");
 const tagsecs = document.getElementById("secs");
 const tagblass = document.getElementById("bless");
+const tagyearold = document.getElementById("yearold");
+const tagblessword = document.getElementById("blessword");
 
 //arr bless
 
@@ -56,13 +62,20 @@ const nextTimetobirthday = () => {
 //fn animation HBD
 
 const HBD = () => {
+  const birthdayYear = currentyear - yearOfmybirth;
+
   tagblass.classList.toggle("hidden");
-  tagtimecountdown.classList.add("hidden");
+  tagtimesection.classList.add("hidden");
 
   let numRandom = Math.floor(Math.random() * 10 + 1);
 
   console.log(numRandom);
-  tagblass.innerHTML = birthdayWishes[numRandom];
+
+  tagblessword.innerHTML = birthdayWishes[numRandom];
+  tagyearold.innerHTML = `ยินดีด้วยคุณ ${myName
+    .split("")
+    .reverse()
+    .join("")} อายุครบ ${birthdayYear} ปี`;
 };
 
 //fn Time countdown
@@ -82,7 +95,7 @@ const countdown = () => {
   const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
   //inserttotagHTML
-  tagtimecountdown.innerHTML = `${days} Day ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+  //tagtimecountdown.innerHTML = `${days} Day ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
   tagday.innerHTML = days;
   taghours.innerHTML = hours;
   tagmins.innerHTML = minutes;
